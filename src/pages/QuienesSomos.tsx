@@ -3,9 +3,9 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
-import img27 from "@/assets/gallery/img27.jpg";
-import img28 from "@/assets/gallery/img28.jpg";
-import img19 from "@/assets/gallery/img19.jpg";
+import img27 from "@/assets/gallery/img27.png";
+import img28 from "@/assets/gallery/img28.png";
+import img19 from "@/assets/gallery/img19.png";
 
 const values = [
   {

@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import img19 from "@/assets/gallery/img19.jpg";
-import img10 from "@/assets/gallery/img10.jpg";
+import img19 from "@/assets/gallery/img19.png";
+import img10 from "@/assets/gallery/img10.png";
 
 const services = [
   {
