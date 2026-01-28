@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import img28 from "@/assets/gallery/img28.jpg";
+import img28 from "@/assets/gallery/img28.png";
 
 const AboutTeaser = () => {
   const ref = useRef(null);

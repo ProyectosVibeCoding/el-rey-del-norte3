@@ -4,14 +4,14 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
-import img1 from "@/assets/gallery/img1.jpg";
-import img5 from "@/assets/gallery/img5.jpg";
-import img10 from "@/assets/gallery/img10.jpg";
-import img16 from "@/assets/gallery/img16.jpg";
-import img19 from "@/assets/gallery/img19.jpg";
-import img21 from "@/assets/gallery/img21.jpg";
-import img27 from "@/assets/gallery/img27.jpg";
-import img28 from "@/assets/gallery/img28.jpg";
+import img1 from "@/assets/gallery/img1.png";
+import img5 from "@/assets/gallery/img5.png";
+import img10 from "@/assets/gallery/img10.png";
+import img16 from "@/assets/gallery/img16.png";
+import img19 from "@/assets/gallery/img19.png";
+import img21 from "@/assets/gallery/img21.png";
+import img27 from "@/assets/gallery/img27.png";
+import img28 from "@/assets/gallery/img28.png";
 
 const galleryImages = [
   { src: img1, alt: "Mueble de baño blanco moderno" },
