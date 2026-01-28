@@ -6,6 +6,7 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 import img1 from "@/assets/gallery/img1.png";
 import img5 from "@/assets/gallery/img5.png";
+import img9 from "@/assets/gallery/img9.png";
 import img10 from "@/assets/gallery/img10.png";
 import img16 from "@/assets/gallery/img16.png";
 import img19 from "@/assets/gallery/img19.png";
@@ -16,6 +17,7 @@ import img28 from "@/assets/gallery/img28.png";
 const galleryImages = [
   { src: img1, alt: "Mueble de baño blanco moderno" },
   { src: img5, alt: "Alacena estilo campo" },
+  { src: img9, alt: "Mueble para TV moderno con biblioteca" },
   { src: img10, alt: "Muebles de cocina modernos" },
   { src: img16, alt: "Deck de madera para exterior" },
   { src: img19, alt: "Muebles de cocina en madera maciza" },
