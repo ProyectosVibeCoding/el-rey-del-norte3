@@ -52,12 +52,28 @@ const Contacto = () => {
 
       if (error) throw error;
 
+      // Build personalized WhatsApp message
+      let whatsappMessage = `Hola, soy ${data.nombre}.`;
+      if (data.articulo) {
+        whatsappMessage += ` Estoy interesado/a en: ${data.articulo}.`;
+      }
+      if (data.mensaje) {
+        whatsappMessage += ` ${data.mensaje}`;
+      }
+      
+      const redirectUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
+
       setIsSuccess(true);
       reset();
       toast({
         title: "¡Mensaje enviado!",
-        description: "Te contactaremos pronto.",
+        description: "Te redirigimos a WhatsApp...",
       });
+
+      // Redirect to WhatsApp after a brief delay
+      setTimeout(() => {
+        window.open(redirectUrl, "_blank");
+      }, 1000);
     } catch (error) {
       console.error("Error submitting form:", error);
       toast({
