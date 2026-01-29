@@ -3,9 +3,33 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
+import carpinteroImg from "@/assets/carpintero-historia.jpg";
 import img27 from "@/assets/gallery/img27.png";
 import img28 from "@/assets/gallery/img28.png";
 import img19 from "@/assets/gallery/img19.png";
+
+const timeline = [
+  {
+    year: "2003",
+    title: "Los Comienzos",
+    description: "Con un pequeño taller y grandes sueños, comenzamos a dar forma a nuestros primeros muebles en el corazón de Córdoba.",
+  },
+  {
+    year: "2010",
+    title: "Crecimiento y Expansión",
+    description: "Ampliamos nuestro taller e incorporamos maquinaria de última generación sin perder la esencia artesanal que nos caracteriza.",
+  },
+  {
+    year: "2018",
+    title: "Reconocimiento Regional",
+    description: "Nos consolidamos como referentes en mobiliario de calidad en toda la provincia de Córdoba.",
+  },
+  {
+    year: "Hoy",
+    title: "Mirando al Futuro",
+    description: "Seguimos innovando y perfeccionando nuestro oficio, combinando tradición artesanal con diseños contemporáneos.",
+  },
+];
 
 const values = [
   {
@@ -26,31 +50,15 @@ const values = [
   },
 ];
 
-const steps = [
-  {
-    number: "01",
-    title: "Consulta Inicial",
-    description: "Nos reunimos para conocer tus ideas, necesidades y el espacio disponible.",
-  },
-  {
-    number: "02",
-    title: "Diseño y Presupuesto",
-    description: "Elaboramos el diseño detallado y un presupuesto transparente sin costos ocultos.",
-  },
-  {
-    number: "03",
-    title: "Fabricación e Instalación",
-    description: "Fabricamos tu mueble con los mejores materiales y lo instalamos profesionalmente.",
-  },
-];
-
-const QuienesSomos = () => {
+const NuestraHistoria = () => {
   const heroRef = useRef(null);
   const isHeroInView = useInView(heroRef, { once: true });
+  const storyRef = useRef(null);
+  const isStoryInView = useInView(storyRef, { once: true, margin: "-100px" });
+  const timelineRef = useRef(null);
+  const isTimelineInView = useInView(timelineRef, { once: true, margin: "-100px" });
   const valuesRef = useRef(null);
   const isValuesInView = useInView(valuesRef, { once: true, margin: "-100px" });
-  const stepsRef = useRef(null);
-  const isStepsInView = useInView(stepsRef, { once: true, margin: "-100px" });
 
   return (
     <Layout>
@@ -65,26 +73,32 @@ const QuienesSomos = () => {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <span className="text-accent text-sm tracking-[0.3em] uppercase mb-4 block">
-              Nuestra Historia
+              Desde 2003
             </span>
             <h1 className="font-serif text-4xl lg:text-6xl text-foreground mb-6">
-              Quiénes Somos
+              Nuestra Historia
             </h1>
             <div className="section-divider mx-auto" />
           </motion.div>
+        </div>
+      </section>
 
+      {/* Story Section with Carpenter Image */}
+      <section className="py-16 lg:py-24 bg-charcoal-light">
+        <div className="container mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <motion.div
+              ref={storyRef}
               initial={{ opacity: 0, x: -50 }}
-              animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              animate={isStoryInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8 }}
               className="relative"
             >
               <div className="image-hover-zoom rounded-sm overflow-hidden">
                 <img
-                  src={img27}
-                  alt="Mueble artesanal de El Rey del Norte"
-                  className="w-full h-[400px] lg:h-[500px] object-cover"
+                  src={carpinteroImg}
+                  alt="Maestro carpintero trabajando la madera en nuestro taller"
+                  className="w-full h-[400px] lg:h-[550px] object-cover"
                   loading="lazy"
                 />
               </div>
@@ -93,30 +107,98 @@ const QuienesSomos = () => {
 
             <motion.div
               initial={{ opacity: 0, x: 50 }}
-              animate={isHeroInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              animate={isStoryInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
               <h2 className="font-serif text-3xl lg:text-4xl text-foreground mb-6">
-                Tradición y Modernidad
+                Más de 20 Años de Pasión por la Madera
               </h2>
+              <div className="section-divider mb-8" />
               <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                Somos una mueblería cordobesa con más de 20 años de experiencia 
-                en la fabricación de muebles de alta calidad. Combinamos técnicas 
-                artesanales tradicionales con diseños contemporáneos para crear 
-                piezas únicas que perduran en el tiempo.
+                Todo comenzó en un pequeño taller de barrio, donde un joven carpintero 
+                con las manos llenas de aserrín soñaba con crear muebles que contaran 
+                historias. Con dedicación, esfuerzo y un amor profundo por el oficio, 
+                <strong className="text-foreground"> El Rey del Norte</strong> nació en Córdoba.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                Trabajamos con maderas seleccionadas y materiales de primera 
-                calidad, siempre adaptándonos a las necesidades específicas de 
-                cada cliente. Ya sea que busques un diseño propio o prefieras 
-                que creemos algo especial para vos, estamos aquí para ayudarte.
+                Durante más de dos décadas, hemos transformado maderas nobles en piezas 
+                que habitan los hogares cordobeses. Cada mueble que sale de nuestro taller 
+                lleva consigo la dedicación de manos expertas que aprendieron el oficio 
+                de generación en generación.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Hoy, combinamos las técnicas artesanales tradicionales que nos enseñaron 
+                nuestros maestros con las tecnologías más modernas. Pero nuestra esencia 
+                sigue siendo la misma: <em className="text-accent">crear muebles con alma</em>, 
+                piezas únicas que perduran en el tiempo y se convierten en parte de tu historia familiar.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Nuestro compromiso es transformar tus ideas en realidad, 
-                brindando un servicio personalizado desde la primera consulta 
-                hasta la instalación final.
+                No somos solo una mueblería. Somos artesanos que entienden que cada hogar 
+                es único, y por eso cada proyecto que emprendemos es tratado con la misma 
+                pasión y dedicación que el primero.
               </p>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section className="py-24 lg:py-32 bg-background">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div
+            ref={timelineRef}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isTimelineInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-2xl mx-auto mb-16"
+          >
+            <span className="text-accent text-sm tracking-[0.3em] uppercase mb-4 block">
+              Nuestro Recorrido
+            </span>
+            <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6">
+              Hitos que Nos Definen
+            </h2>
+            <div className="section-divider mx-auto" />
+          </motion.div>
+
+          <div className="relative">
+            {/* Timeline Line */}
+            <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-px h-full bg-border" />
+
+            <div className="space-y-12 lg:space-y-0">
+              {timeline.map((item, index) => (
+                <motion.div
+                  key={item.year}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isTimelineInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: index * 0.15 }}
+                  className={`lg:flex items-center ${
+                    index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+                  }`}
+                >
+                  <div className={`lg:w-1/2 ${index % 2 === 0 ? "lg:pr-16 lg:text-right" : "lg:pl-16"}`}>
+                    <div className="card-luxury p-8">
+                      <span className="text-accent font-serif text-3xl block mb-2">
+                        {item.year}
+                      </span>
+                      <h3 className="font-serif text-xl text-foreground mb-3">
+                        {item.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {/* Timeline Dot */}
+                  <div className="hidden lg:flex w-4 h-4 bg-accent rounded-full border-4 border-background absolute left-1/2 transform -translate-x-1/2" 
+                    style={{ top: `${(index * 25) + 12}%` }} 
+                  />
+                  
+                  <div className="lg:w-1/2" />
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -135,7 +217,7 @@ const QuienesSomos = () => {
               Nuestros Valores
             </span>
             <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6">
-              Lo Que Nos Define
+              Lo Que Nos Guía
             </h2>
             <div className="section-divider mx-auto" />
           </motion.div>
@@ -164,53 +246,8 @@ const QuienesSomos = () => {
         </div>
       </section>
 
-      {/* How We Work Section */}
-      <section className="py-24 lg:py-32 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.div
-            ref={stepsRef}
-            initial={{ opacity: 0, y: 30 }}
-            animate={isStepsInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-2xl mx-auto mb-16"
-          >
-            <span className="text-accent text-sm tracking-[0.3em] uppercase mb-4 block">
-              Proceso
-            </span>
-            <h2 className="font-serif text-4xl lg:text-5xl text-foreground mb-6">
-              Cómo Trabajamos
-            </h2>
-            <div className="section-divider mx-auto" />
-          </motion.div>
-
-          <div className="grid lg:grid-cols-3 gap-12">
-            {steps.map((step, index) => (
-              <motion.div
-                key={step.number}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isStepsInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="relative"
-              >
-                <span className="text-8xl font-serif text-accent/10 absolute -top-8 left-0">
-                  {step.number}
-                </span>
-                <div className="pt-12">
-                  <h3 className="font-serif text-2xl text-foreground mb-4">
-                    {step.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Gallery Preview */}
-      <section className="py-24 lg:py-32 bg-charcoal-light">
+      <section className="py-24 lg:py-32 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-4">
             {[img28, img19, img27].map((img, index) => (
@@ -242,4 +279,4 @@ const QuienesSomos = () => {
   );
 };
 
-export default QuienesSomos;
+export default NuestraHistoria;
