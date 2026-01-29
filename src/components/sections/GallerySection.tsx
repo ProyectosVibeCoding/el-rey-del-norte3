@@ -15,15 +15,60 @@ import img27 from "@/assets/gallery/img27.png";
 import img28 from "@/assets/gallery/img28.png";
 
 const galleryImages = [
-  { src: img1, alt: "Mueble de baño blanco moderno" },
-  { src: img5, alt: "Alacena estilo campo" },
-  { src: img9, alt: "Mueble para TV moderno con biblioteca" },
-  { src: img10, alt: "Muebles de cocina modernos" },
-  { src: img16, alt: "Deck de madera para exterior" },
-  { src: img19, alt: "Muebles de cocina en madera maciza" },
-  { src: img21, alt: "Cocina celeste estilo clásico" },
-  { src: img27, alt: "Cómoda de madera artesanal" },
-  { src: img28, alt: "Vitrina de madera con vidrio" },
+  { 
+    src: img1, 
+    alt: "Mueble de baño blanco moderno",
+    title: "Vanitory Moderno",
+    description: "Mueble de baño en melamina blanca con cajones de cierre suave y mesada de mármol sintético."
+  },
+  { 
+    src: img5, 
+    alt: "Alacena estilo campo",
+    title: "Alacena Rústica",
+    description: "Alacena estilo campo en madera maciza con puertas de vidrio repartido y terminación envejecida."
+  },
+  { 
+    src: img9, 
+    alt: "Mueble para TV moderno con biblioteca",
+    title: "Mueble TV con Biblioteca",
+    description: "Centro de entretenimiento moderno con espacios de guardado, estantes flotantes y pasacables integrados."
+  },
+  { 
+    src: img10, 
+    alt: "Muebles de cocina modernos",
+    title: "Cocina Integral",
+    description: "Cocina completa con bajo mesada, alacenas y torre de hornos. Terminación en melamina gris topo."
+  },
+  { 
+    src: img16, 
+    alt: "Deck de madera para exterior",
+    title: "Deck de Exterior",
+    description: "Deck en madera de lapacho tratada para exterior con terminación antideslizante y alta durabilidad."
+  },
+  { 
+    src: img19, 
+    alt: "Muebles de cocina en madera maciza",
+    title: "Cocina en Madera Natural",
+    description: "Cocina premium en madera de paraíso con mesada de granito negro y herrajes de acero inoxidable."
+  },
+  { 
+    src: img21, 
+    alt: "Cocina celeste estilo clásico",
+    title: "Cocina Estilo Clásico",
+    description: "Cocina con frentes perfilados en laca celeste, tiradores vintage y mesada de cuarzo blanco."
+  },
+  { 
+    src: img27, 
+    alt: "Cómoda de madera artesanal",
+    title: "Cómoda Artesanal",
+    description: "Cómoda de madera maciza con cajones amplios, correderas metálicas y acabado natural encerado."
+  },
+  { 
+    src: img28, 
+    alt: "Vitrina de madera con vidrio",
+    title: "Vitrina Exhibidora",
+    description: "Vitrina en madera con puertas de vidrio, iluminación LED interior y estantes regulables."
+  },
 ];
 
 const GallerySection = () => {
@@ -82,14 +127,25 @@ const GallerySection = () => {
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               onClick={() => openLightbox(index)}
-              className="image-hover-zoom aspect-square rounded-sm overflow-hidden focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background"
+              className="group relative aspect-square rounded-sm overflow-hidden focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background"
             >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
+              <div className="image-hover-zoom w-full h-full">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              {/* Overlay with title */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                <h3 className="font-serif text-foreground text-sm lg:text-base mb-1">
+                  {image.title}
+                </h3>
+                <p className="text-muted-foreground text-xs line-clamp-2 hidden lg:block">
+                  {image.description}
+                </p>
+              </div>
             </motion.button>
           ))}
         </div>
@@ -137,18 +193,37 @@ const GallerySection = () => {
               <ChevronRight className="w-10 h-10" />
             </button>
 
-            {/* Image */}
-            <motion.img
-              key={selectedImage}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3 }}
-              src={galleryImages[selectedImage].src}
-              alt={galleryImages[selectedImage].alt}
-              className="max-w-full max-h-[85vh] object-contain rounded-sm"
+            {/* Image with info */}
+            <div 
+              className="flex flex-col items-center max-w-4xl"
               onClick={(e) => e.stopPropagation()}
-            />
+            >
+              <motion.img
+                key={selectedImage}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                src={galleryImages[selectedImage].src}
+                alt={galleryImages[selectedImage].alt}
+                className="max-w-full max-h-[70vh] object-contain rounded-sm"
+              />
+              
+              {/* Title and description */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.1 }}
+                className="text-center mt-6 px-4"
+              >
+                <h3 className="font-serif text-2xl text-foreground mb-2">
+                  {galleryImages[selectedImage].title}
+                </h3>
+                <p className="text-muted-foreground text-sm max-w-lg">
+                  {galleryImages[selectedImage].description}
+                </p>
+              </motion.div>
+            </div>
 
             {/* Counter */}
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-muted-foreground text-sm">
