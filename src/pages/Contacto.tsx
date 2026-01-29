@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Phone, Mail, MapPin, MessageCircle, Send, Loader2 } from "lucide-react";
+import { Phone, MapPin, MessageCircle, Send, Loader2, Clock } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -114,17 +114,18 @@ const Contacto = () => {
                 Información de Contacto
               </h2>
               
-              <div className="space-y-6 mb-12">
+              {/* Contact Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
                 <a
                   href="tel:+5493512346427"
                   className="flex items-start gap-4 text-muted-foreground hover:text-accent transition-colors duration-300 group"
                 >
-                  <div className="w-12 h-12 border border-border rounded-full flex items-center justify-center group-hover:border-accent transition-colors duration-300">
-                    <Phone className="w-5 h-5" />
+                  <div className="w-12 h-12 bg-accent/10 border border-accent/30 rounded-lg flex items-center justify-center group-hover:border-accent transition-colors duration-300">
+                    <Phone className="w-5 h-5 text-accent" />
                   </div>
                   <div>
-                    <p className="text-foreground font-medium mb-1">Teléfono</p>
-                    <p>+54 9 351 234-6427</p>
+                    <p className="text-foreground font-medium mb-1">Llámanos</p>
+                    <p>3512 34-6427</p>
                   </div>
                 </a>
 
@@ -134,53 +135,54 @@ const Contacto = () => {
                   rel="noopener noreferrer"
                   className="flex items-start gap-4 text-muted-foreground hover:text-[#25D366] transition-colors duration-300 group"
                 >
-                  <div className="w-12 h-12 border border-border rounded-full flex items-center justify-center group-hover:border-[#25D366] transition-colors duration-300">
-                    <MessageCircle className="w-5 h-5" />
+                  <div className="w-12 h-12 bg-accent/10 border border-accent/30 rounded-lg flex items-center justify-center group-hover:border-[#25D366] transition-colors duration-300">
+                    <MessageCircle className="w-5 h-5 text-accent" />
                   </div>
                   <div>
                     <p className="text-foreground font-medium mb-1">WhatsApp</p>
-                    <p>Escribinos directamente</p>
+                    <p>+54 9 3512 34-6427</p>
                   </div>
                 </a>
 
                 <a
-                  href="mailto:info@elreydelnorte.com"
+                  href="https://maps.google.com/?q=Av.+Hipólito+Yrigoyen+456,+Córdoba,+Argentina"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-start gap-4 text-muted-foreground hover:text-accent transition-colors duration-300 group"
                 >
-                  <div className="w-12 h-12 border border-border rounded-full flex items-center justify-center group-hover:border-accent transition-colors duration-300">
-                    <Mail className="w-5 h-5" />
+                  <div className="w-12 h-12 bg-accent/10 border border-accent/30 rounded-lg flex items-center justify-center group-hover:border-accent transition-colors duration-300">
+                    <MapPin className="w-5 h-5 text-accent" />
                   </div>
                   <div>
-                    <p className="text-foreground font-medium mb-1">Email</p>
-                    <p>info@elreydelnorte.com</p>
+                    <p className="text-foreground font-medium mb-1">Visítanos</p>
+                    <p>Av. Hipólito Yrigoyen 456, X5000<br />Córdoba, Argentina</p>
                   </div>
                 </a>
 
                 <div className="flex items-start gap-4 text-muted-foreground">
-                  <div className="w-12 h-12 border border-border rounded-full flex items-center justify-center">
-                    <MapPin className="w-5 h-5" />
+                  <div className="w-12 h-12 bg-accent/10 border border-accent/30 rounded-lg flex items-center justify-center">
+                    <Clock className="w-5 h-5 text-accent" />
                   </div>
                   <div>
-                    <p className="text-foreground font-medium mb-1">Ubicación</p>
-                    <p>Córdoba, Argentina</p>
+                    <p className="text-foreground font-medium mb-1">Horario</p>
+                    <p>Lun - Vie: 10:00 - 19:00</p>
                   </div>
                 </div>
               </div>
 
-              <div className="p-8 bg-background rounded-sm border border-border">
-                <h3 className="font-serif text-xl text-foreground mb-4">
-                  Horario de Atención
-                </h3>
-                <div className="space-y-2 text-muted-foreground text-sm">
-                  <p className="flex justify-between">
-                    <span>Lunes a Viernes:</span>
-                    <span>8:00 - 18:00</span>
-                  </p>
-                  <p className="flex justify-between">
-                    <span>Sábados:</span>
-                    <span>9:00 - 13:00</span>
-                  </p>
-                </div>
+              {/* Google Maps Embed */}
+              <div className="rounded-lg overflow-hidden border border-border">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3405.0!2d-64.18!3d-31.42!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432a29f11a3d0f3%3A0x0!2sAv.%20Hip%C3%B3lito%20Yrigoyen%20456%2C%20C%C3%B3rdoba%2C%20Argentina!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar"
+                  width="100%"
+                  height="300"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Ubicación El Rey del Norte"
+                  className="grayscale hover:grayscale-0 transition-all duration-500"
+                />
               </div>
             </motion.div>
 

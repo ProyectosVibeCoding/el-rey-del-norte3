@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Facebook, Phone, MapPin, Mail } from "lucide-react";
+import { Facebook, Phone, MapPin } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
@@ -55,21 +55,19 @@ const Footer = () => {
                   className="flex items-start gap-3 text-muted-foreground hover:text-accent transition-colors duration-300 text-sm"
                 >
                   <Phone className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                  <span>+54 9 351 234-6427</span>
+                  <span>3512 34-6427</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:info@elreydelnorte.com"
+                  href="https://maps.google.com/?q=Av.+Hipólito+Yrigoyen+456,+Córdoba,+Argentina"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-start gap-3 text-muted-foreground hover:text-accent transition-colors duration-300 text-sm"
                 >
-                  <Mail className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                  <span>info@elreydelnorte.com</span>
+                  <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                  <span>Av. Hipólito Yrigoyen 456, X5000<br />Córdoba, Argentina</span>
                 </a>
-              </li>
-              <li className="flex items-start gap-3 text-muted-foreground text-sm">
-                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                <span>Córdoba, Argentina</span>
               </li>
             </ul>
           </div>
