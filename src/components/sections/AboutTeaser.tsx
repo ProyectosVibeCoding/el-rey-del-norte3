@@ -55,7 +55,7 @@ const AboutTeaser = () => {
               adaptándonos a tus necesidades y espacios. Tu visión, nuestra pasión.
             </p>
             <Link
-              to="/quienes-somos"
+              to="/nuestra-historia"
               className="inline-flex items-center text-accent hover:text-gold-light transition-colors duration-300 text-sm tracking-wider uppercase group"
             >
               Conocer más
